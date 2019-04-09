@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <h1><strong>Products</strong></h1>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col align-self-end">
+      <a href="products/new" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Create new product</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-10">
+      <table class="table justify-content-center">
+        <thead>
+
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Category</th>
+        </thead>
+        <tbody>
+          <% @products.each do |product| %>
+          <td><%= product.name %></td>
+          <td><%= product.price %></td>
+
+          <td>
+            <% product.categories.each do |product|  %>
+            <%= product.name %>
+            <%end%>
+          </td>
+          <td>
+              <%= link_to "Edit", edit_product_path(product) %>
+              <%= link_to "Delete", product, method: :delete, data: {confirm: 'are you sure you want to delete ?'}  %></td>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

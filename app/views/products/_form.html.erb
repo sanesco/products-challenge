@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <h1> <strong>New product</strong> </h1>
+
+      <%= form_for @product do |f| %>
+
+      <div>
+        <%= f.text_field :name, :placeHolder => 'Product name'%>
+      </div>
+
+      <div>
+        <%= f.text_field :price, :placeHolder => 'Product price' %>
+      </div>
+
+      <div>
+        <% @categories.each do |category|%>
+
+          <%= check_box_tag "product[category_id][]", category.id, @product.category_ids.include?(category.id) %>
+          <%= category.name %>
+          <br>
+        <% end %>
+      </div>
+
+      <div>
+        <%= f.submit 'Update product', :class => 'btn btn-primary' %>
+      </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
